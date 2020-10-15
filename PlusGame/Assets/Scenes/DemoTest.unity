@@ -82117,13 +82117,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1427660478, guid: 4daa11ddffadd3741b8a1f759e4a0080, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1427660478, guid: 4daa11ddffadd3741b8a1f759e4a0080, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
+    - target: {fileID: 7453084276244741092, guid: 4daa11ddffadd3741b8a1f759e4a0080,
+        type: 3}
+      propertyPath: maxTimer
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4daa11ddffadd3741b8a1f759e4a0080, type: 3}

@@ -9,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         if (playerControls == null) print("playerControls is MISSING!");
+    }
+
+    private void Start()
+    {
         movementSpeed /= movementDivisionValue;
     }
 

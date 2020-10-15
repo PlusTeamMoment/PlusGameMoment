@@ -19,7 +19,7 @@ public class PlayerControls : MonoBehaviour
         else topInput = false;
         if (Input.GetKey(KeyCode.S)) bottomInput = true;
         else bottomInput = false;
-        if (Input.GetButton("Fire1")) weaponMainAttack = true;
+        if (Input.GetButtonDown("Fire1")) weaponMainAttack = true;
         else weaponMainAttack = false;
     }
 }
