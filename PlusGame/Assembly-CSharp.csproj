@@ -64,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DemoTest\Camera\CameraFollowPlayer.cs" />
+    <Compile Include="Assets\DemoTest\Player\PlayerScripts\DamageCheck.cs" />
+    <Compile Include="Assets\DemoTest\Player\PlayerScripts\enemy.cs" />
+    <Compile Include="Assets\DemoTest\Player\PlayerScripts\IDamageable.cs" />
     <Compile Include="Assets\DemoTest\Player\PlayerScripts\PlayerAttack.cs" />
     <Compile Include="Assets\DemoTest\Player\PlayerScripts\PlayerControls.cs" />
     <Compile Include="Assets\DemoTest\Player\PlayerScripts\PlayerMovement.cs" />

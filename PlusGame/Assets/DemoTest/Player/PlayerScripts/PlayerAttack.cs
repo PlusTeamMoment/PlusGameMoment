@@ -44,5 +44,6 @@ public class PlayerAttack : MonoBehaviour
             currentTimerStatus = maxTimer;
             timerState = false;
         }
+
     }
 }
