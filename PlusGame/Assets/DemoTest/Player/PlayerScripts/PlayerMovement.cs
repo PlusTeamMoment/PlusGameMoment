@@ -5,9 +5,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float movementSpeed;
     [SerializeField] float movementDivisionValue;
     [SerializeField] private PlayerControls playerControls;
+    private Rigidbody2D player_rb;
 
     void Awake()
     {
+        player_rb = GetComponent<Rigidbody2D>();
         if (playerControls == null) print("playerControls is MISSING!");
     }
 
@@ -16,27 +18,8 @@ public class PlayerMovement : MonoBehaviour
         movementSpeed /= movementDivisionValue;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (playerControls.rightInput == true)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 90);
-            transform.position += new Vector3(movementSpeed, 0, 0);
-        }
-        if (playerControls.leftInput == true)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 270);
-            transform.position += new Vector3(-movementSpeed, 0, 0);
-        }
-        if (playerControls.topInput == true)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 180);
-            transform.position += new Vector3(0, movementSpeed, 0);
-        }
-        if (playerControls.bottomInput == true)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            transform.position += new Vector3(0, -movementSpeed, 0);
-        }
+        player_rb.velocity = new Vector2(playerControls.Horizontal * movementSpeed, playerControls.Vertical * movementSpeed);
     }
 }

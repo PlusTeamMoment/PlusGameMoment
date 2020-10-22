@@ -7,11 +7,7 @@ public class enemy : MonoBehaviour, IDamageable
     public int Hp
     {
         get => _hp;
-        private set
-        {
-            if (value > maxHP) _hp = maxHP;
-            if (value <= 0) _hp = 1;
-        }
+        private set => _hp = Mathf.Clamp(value, 0, maxHP);
     }
 
     void OnEnable()
