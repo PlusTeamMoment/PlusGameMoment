@@ -3,61 +3,46 @@
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float movementSpeed;
-    [SerializeField] float movementDivisionValue;
     [SerializeField] private INullablePlayerControls playerControls;
-    private Rigidbody2D player_rb;
-    private Direction facingDirection;
-    public Direction FacingDirection { get => facingDirection; private set=> facingDirection = value; }
-    
+    private Rigidbody2D rigidbody;
+    private Animator animator;
 
     void Awake()
     {
-        player_rb = GetComponent<Rigidbody2D>();
+        rigidbody = GetComponent<Rigidbody2D>();
         if (GetComponent<PlayerControls>() == null)
             playerControls = new NullPlayerControls();
         else
             playerControls = GetComponent<PlayerControls>();
+
+        animator = GetComponent<Animator>();
     }
 
-    private void Start()
-    {
-        movementSpeed /= movementDivisionValue;
-    }
 
     void FixedUpdate()
     {
-        
-        player_rb.velocity = new Vector2(playerControls.Horizontal * movementSpeed, playerControls.Vertical * movementSpeed);
-        var playerVelocity = player_rb.velocity;
+        Vector2 movement = new Vector2(playerControls.Horizontal, playerControls.Vertical);
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
 
-        if (playerVelocity.x > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 270);
-            facingDirection = Direction.Right;
-        }
-        else if (playerVelocity.x < 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 90);
-            facingDirection = Direction.Left;
-        }
+        rigidbody.velocity = movement.normalized * movementSpeed * Time.fixedDeltaTime;
 
-        if (playerVelocity.y > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            facingDirection = Direction.Up;
-        }
-        else if (playerVelocity.y < 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 180);
-            facingDirection = Direction.Down;
-        }
     }
-}
 
-public enum Direction
-{
-    Left,
-    Right,
-    Up,
-    Down
+    public bool FacingLeft()
+    {
+        return rigidbody.velocity.x < 0;
+    }
+    public bool FacingRight()
+    {
+        return rigidbody.velocity.x > 0;
+    }
+    public bool FacingUp()
+    {
+        return rigidbody.velocity.y > 0;
+    }
+    public bool FacingDown()
+    {
+        return rigidbody.velocity.y < 0;
+    }
 }

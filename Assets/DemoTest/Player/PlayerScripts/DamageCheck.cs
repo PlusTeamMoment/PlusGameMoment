@@ -23,44 +23,46 @@ public class DamageCheck : MonoBehaviour
 
     private void Update()
     {
-        var playerDirection = playerMovement.FacingDirection;
 
-        if (playerDirection == Direction.Right)
+        if (playerMovement.FacingRight())
         {
             HitboxRepositionRight();
         }
-        else if (playerDirection == Direction.Left)
+        else if (playerMovement.FacingLeft())
         {
             HitboxRepositionLeft();
         }
-        else if (playerDirection == Direction.Up)
+        else if (playerMovement.FacingUp())
         {
             HitboxRepositionUp();
         }
-        else if(playerDirection == Direction.Down)
+        else if (playerMovement.FacingDown())
         {
             HitboxRepositionDown();
         }
-
     }
 
     private void HitboxRepositionDown()
     {
         transform.position = new Vector3(player_main.transform.position.x, player_main.transform.position.y - offset, player_main.transform.position.z);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void HitboxRepositionUp()
     {
         transform.position = new Vector3(player_main.transform.position.x, player_main.transform.position.y + offset, player_main.transform.position.z);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     private void HitboxRepositionLeft()
     {
         transform.position = new Vector3(player_main.transform.position.x - offset, player_main.transform.position.y, player_main.transform.position.z);
+        transform.rotation = Quaternion.Euler(0, 0, 90);
     }
 
     private void HitboxRepositionRight()
     {
         transform.position = new Vector3(player_main.transform.position.x + offset, player_main.transform.position.y, player_main.transform.position.z);
+        transform.rotation = Quaternion.Euler(0, 0, -90);
     }
 }

@@ -7,8 +7,8 @@ public class PlayerControls : MonoBehaviour, INullablePlayerControls
     public bool WeaponMainAttack { get; set; }
     void Update()
     {
-        Horizontal = Input.GetAxis("Horizontal");
-        Vertical = Input.GetAxis("Vertical");
+        Horizontal = Input.GetAxisRaw("Horizontal");
+        Vertical = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Fire1")) WeaponMainAttack = true;
         else WeaponMainAttack = false;
     }
