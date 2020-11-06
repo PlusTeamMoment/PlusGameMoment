@@ -4,6 +4,12 @@ public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField] private int maxHP;
     [SerializeField] private int _hp;
+    private Spawner spawner;
+
+    private void Update()
+    {
+        spawner = FindObjectOfType<Spawner>();
+    }
 
     public int Hp
     {
@@ -27,6 +33,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        spawner.activeEnemies.Remove(this);
         Destroy(gameObject);
     }
 }
