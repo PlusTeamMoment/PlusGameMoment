@@ -24,7 +24,8 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator Spawn()
     {
-        var obj = Instantiate(enemy, transform.position, Quaternion.identity);
+        Vector3 distanceOffset = new Vector3(activeEnemies.Count, 0, 0);
+        var obj = Instantiate(enemy, transform.position + distanceOffset, Quaternion.identity);
         obj.transform.SetParent(this.transform);
         activeEnemies.Add(obj);
         yield return new WaitForSeconds(spawnRate);
