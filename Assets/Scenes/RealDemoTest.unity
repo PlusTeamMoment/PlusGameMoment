@@ -9088,13 +9088,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043365846}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c75b3f2f1ebb6d649864c3f3cbf4d162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 2
-  enemy: {fileID: 0}
+  enemy: {fileID: 7383580436542431001, guid: dc43f0bc84d2b9e418b637c4727fd0a7, type: 3}
   maxNumberEnemy: 5
   activeEnemies: []
 --- !u!4 &2043365848
@@ -9621,21 +9621,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8491624865472590197, guid: 4daa11ddffadd3741b8a1f759e4a0080,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8491624865472590199, guid: 4daa11ddffadd3741b8a1f759e4a0080,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8491624865472590198, guid: 4daa11ddffadd3741b8a1f759e4a0080,
-        type: 3}
-      propertyPath: attackDamage
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4daa11ddffadd3741b8a1f759e4a0080, type: 3}
