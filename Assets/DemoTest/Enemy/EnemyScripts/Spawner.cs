@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private float spawnRate;
-    [SerializeField] private Enemy enemy;
+    [SerializeField] private Enemy[] enemy;
     [SerializeField] private int maxNumberEnemy;
     private IEnumerator spawner;
     public List<Enemy> activeEnemies;
@@ -24,8 +24,9 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator Spawn()
     {
+        var randomIndex = Random.Range(0, enemy.Length);
         Vector3 distanceOffset = new Vector3(activeEnemies.Count, 0, 0);
-        var obj = Instantiate(enemy, transform.position + distanceOffset, Quaternion.identity);
+        var obj = Instantiate(enemy[randomIndex], transform.position + distanceOffset, Quaternion.identity);
         obj.transform.SetParent(this.transform);
         activeEnemies.Add(obj);
         yield return new WaitForSeconds(spawnRate);
@@ -43,5 +44,7 @@ public class Spawner : MonoBehaviour
         StopCoroutine(spawner);
         spawner = null;
     }
+
+
 
 }

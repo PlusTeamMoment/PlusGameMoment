@@ -1,12 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int maxHP;
-    [SerializeField] private int _hp;
-    private Spawner spawner;
+    [SerializeField] protected int maxHP;
+    [SerializeField] protected int _hp;
+    protected Spawner spawner;
+    [SerializeField] protected string essenceName;
+    [SerializeField] protected int essenceFillAmount;
+    public static Action<string, int> onKill;
 
-    private void Update()
+    protected void Update()
     {
         spawner = FindObjectOfType<Spawner>();
     }
@@ -17,7 +21,7 @@ public class Enemy : MonoBehaviour, IDamageable
         private set => _hp = Mathf.Clamp(value, 0, maxHP);
     }
 
-    void OnEnable()
+    protected void OnEnable()
     {
         _hp = maxHP;
     }
@@ -31,9 +35,16 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    private void Die()
+    protected void Die()
     {
-        spawner.activeEnemies.Remove(this);
+        onKill?.Invoke(essenceName, essenceFillAmount);
         Destroy(gameObject);
+
+    }
+
+    protected void OnDestroy()
+    {
+        spawner?.activeEnemies.Remove(this);
+
     }
 }
